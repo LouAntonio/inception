@@ -4,7 +4,7 @@ cd /var/www/wordpress
 
 # Start PHP-FPM in background first to accept connections from nginx
 echo "Starting PHP-FPM in background..."
-php-fpm8.2 &
+php-fpm8.2 -F &
 php_fpm_pid=$!
 
 if [ ! -f "wp-config.php" ]; then
