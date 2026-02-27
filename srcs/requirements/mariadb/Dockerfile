@@ -1,4 +1,4 @@
-FROM debian:13
+FROM debian:bookworm
 
 # update packages and install mariadb
 RUN apt-get update && apt-get install -y mariadb-server \

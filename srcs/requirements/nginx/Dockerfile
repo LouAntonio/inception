@@ -1,4 +1,4 @@
-FROM debian:13
+FROM debian:bookworm
 
 # Update and install NGINX and OpenSSL
 RUN apt-get update && apt-get install -y nginx openssl \
