@@ -2,23 +2,23 @@
 
 set -e
 
-echo "Iniciando MariaDB em modo temporário..."
+echo "Starting MariaDB..."
 
-# Inicia o servidor em background
+# Start the server in fg
 mariadbd-safe --datadir=/var/lib/mysql &
 pid="$!"
 
-# Aguarda até o servidor aceitar conexões
-echo "Aguardando MariaDB ficar disponível..."
+# Wait untill server is up
+echo "Waiting for MariaDB to be ready..."
 until mariadb-admin ping --silent; do
 	sleep 1
 done
 
-echo "MariaDB iniciado com sucesso."
+echo "MariaDB started successfully."
 
-# Só configura se a base de dados ainda não existir
+# Configs if database doesn't exist
 if [ ! -d "/var/lib/mysql/${SQL_DATABASE}" ]; then
-	echo "Configurando base de dados e utilizadores..."
+	echo "Config Database and Users..."
 
 	mariadb -u root <<EOF
 	CREATE DATABASE IF NOT EXISTS \`${SQL_DATABASE}\`;
@@ -28,17 +28,16 @@ if [ ! -d "/var/lib/mysql/${SQL_DATABASE}" ]; then
 	FLUSH PRIVILEGES;
 EOF
 
-	echo "Configuração concluída."
+	echo "Configs applied."
 else
-	echo "Base de dados já existe, ignorando configuração inicial."
+	echo "Database already exists."
 fi
 
-# Encerra a instância temporária
-echo "Encerrando instância temporária..."
+# Shutdown the server
+echo "Shutting down MariaDB..."
 mariadb-admin -u root -p"${SQL_ROOT_PASSWORD}" shutdown
 
 wait "$pid"
 
-echo "Iniciando MariaDB em foreground (PID 1)..."
+echo "Starting MariaDB in foreground (PID 1)..."
 exec mariadbd-safe --datadir=/var/lib/mysql
-
