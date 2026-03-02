@@ -9,6 +9,11 @@ services:
       - inception
     volumes:
       - mariadb_vol:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
 
   wordpress:
     build: requirements/wordpress

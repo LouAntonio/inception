@@ -11,7 +11,7 @@ RUN mkdir -p /etc/nginx/ssl
 RUN openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj \
 "/C=AO/ST=Luanda/L=Luanda/O=42/OU=42/CN=lantonio.42.fr/UID=lantonio"
 
-# Crestes the folder for PID and NGINX
+# Creates the folder for PID and NGINX
 RUN mkdir -p /var/run/nginx
 
 # cpy the personalized configs
