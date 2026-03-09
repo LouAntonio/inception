@@ -12,7 +12,7 @@ This infrastructure provides the following core services, each running within an
 You can control the project's lifecycle from the root repository directory through the implementation provided in the `Makefile`.
 - **To Start:** Run `make` to initiate the Docker Compose configuration, building the required images, and successfully launching internal networking and volumes. 
 - **To Stop:** Run the designated Makefile shutdown block, commonly `make down` (depending on the internal make rule), to cleanly stop and remove all services without deleting persistent volumes.
-- **To Fully Rebuild/Clean:** Run `make fclean` or `make re` (based on internal rules) to force the teardown of persistent volumes, prune custom images, and fully rebuild everything from scratch.
+- **To Fully Rebuild/Clean:** Run `make fclean` or `make re` to force the teardown of persistent volumes, prune custom images, and fully rebuild everything from scratch.
 
 ## Access the website and the administration panel
 1. Ensure your local host machine has valid DNS mapping for the login-driven project domain. Add a new record in your host config mapping (e.g., in `/etc/hosts`, add `127.0.0.1 lantonio.42.fr`).

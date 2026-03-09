@@ -10,6 +10,10 @@ down:
 	@printf "Stopping infrastructure $(name)...\n"
 	@docker compose -f srcs/docker-compose.yml down
 
+up:
+	@printf "Starting infrastruxture $(name)...\n"
+	@docker compose -f srcs/docker-compose.yml up -d --build
+
 clean: down
 	@printf "Cleaning containers and images...\n"
 	@docker system prune -a --force
@@ -21,4 +25,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all down re clean fclean
+.PHONY: all down up re clean fclean

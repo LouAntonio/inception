@@ -3,7 +3,7 @@
 This document describes how a developer can set up, orchestrate, and manage the technical deployment of the Inception project.
 
 ## Set up the environment from scratch
-1. Clone the repository directly into your designated Virtual Machine running Alpine or Debian.
+1. Clone the repository directly into your designated Virtual Machine.
 2. Ensure you have properly declared all prerequisites:
    - Provide a `.env` file within the `srcs` directory with environment variables containing the domain footprint (e.g. `DOMAIN_NAME=lantonio.42.fr`).
    - Create a local un-versioned setup (e.g., inside `.env` or using Docker Secrets locally) keeping confidential variables (`db_password`, `db_root_password`, `credentials.txt`) strictly obfuscated. Avoid accidentally pushing clear passwords to Git.

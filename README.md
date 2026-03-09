@@ -22,6 +22,9 @@ This architecture utilizes **Docker** to containerize our required services, avo
 - **Docker Volumes vs Bind Mounts:** 
   Bind mounts tether a specific existing file or directory directly from the host system file tree into the running container path, directly tying security and dependency permissions to the host's structure. Docker Volumes are entirely decoupled from the host filesystem configuration and managed securely by Docker itself inside its own storage footprint. Docker Volumes provide much better performance on container deployments, seamless portability, and simplify backup mechanisms.
 
+- **Alpine vs Debian as a base image:** 
+  Alpine Linux is a security-oriented, minimal distribution built around musl libc and BusyBox, producing extremely small images (≈5 MB). Debian Bookworm is a full-featured distribution backed by the GNU C Library (glibc), offering the broadest package compatibility and the most mature ecosystem. This project uses **Debian Bookworm** because the required software stack (NGINX with OpenSSL, MariaDB, PHP 8.2-FPM and its extensions) is fully pre-packaged in Debian's APT repositories, eliminating the need to compile anything from source and reducing the risk of subtle runtime incompatibilities caused by musl/glibc differences.
+
 ## Instructions
 **Compilation, Installation, and Execution:**
 Running this project demands an active Virtual Machine with Docker installed.
@@ -37,5 +40,4 @@ Running this project demands an active Virtual Machine with Docker installed.
 - [Docker Documentation](https://docs.docker.com/)
 - [Docker Compose Documentation](https://docs.docker.com/compose/)
 - [NGINX Official Guide](https://nginx.org/en/docs/)
-- [Alpine Linux Documentation](https://wiki.alpinelinux.org/wiki/Main_Page)
-- **AI Usage:** Artificial Intelligence tools were used responsibly during the creation of this project primarily for documentation phrasing structure. Namely, AI assisted in summarizing and drafting the initial content of README.md, USER_DOC.md, and DEV_DOC.md in markdown format directly from the project subject instructions. No raw unverified code was incorporated without fundamental peer checks nor understanding.
+- **AI Usage:** Artificial Intelligence tools were used responsibly for content research for assistence in summarizing and drafting the initial content of README.md, USER_DOC.md, and DEV_DOC.md in markdown format directly from the project subject instructions. No raw unverified code was incorporated without fundamental checks nor understanding.
